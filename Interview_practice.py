@@ -14,9 +14,9 @@
 # You may use whatever programming language you wish.
 # Verbalize your thought process as much as possible before writing any code. Run through the UPER problem solving framework while going through your thought process.
 
-
-
-# PLANNING
+# --------------------------------------------------
+# ---------------------PLANNING---------------------
+# --------------------------------------------------
 
 # Declare our array as a variable
 array = [85, 46, 27, 81, 94, 9, 27, 38, 43, 99, 37, 63, 31, 42, 14]
