@@ -4,29 +4,25 @@ from doubly_linked_list import DoublyLinkedList
 
 class Stack:
     def __init__(self):
-        self.size = 0
         # Why is our DLL a good choice to store our elements?
-        self.storage = DoublyLinkedList
+        self.storage = DoublyLinkedList()
 
     def push(self, value):
         # If the list is empty
-        if len(self.storage) == 0:
-            # Add a head
+        if len(self.storage) <= 0:
+            # Add the first item to the list (head)
             return self.storage.add_to_head(value)
         # If the list already contains data
         elif len(self.storage) > 0:
-            # Increases the size of the list by one
-            self.size += 1
-            # Add an item to the back of the stack
+            # Add an item to the back of the stack (tail)
             return self.storage.add_to_tail(value)
+        # Else return nothing
         else:
             return None
 
     def pop(self):
         # If the size of the list is greater than zero
         if len(self.storage) > 0:
-            # Shrink our list by one
-            self.size -+ 1
             # Remove the item at the back of the stack (tail)
             return self.storage.remove_from_tail()
         # Else return nothing
@@ -34,7 +30,7 @@ class Stack:
             return None
 
     def len(self):
-        # Returns the number of items in the queue
+        # Returns the number of items in the stack
         return len(self.storage)
 
 ## ------------------------------------------------------------
@@ -68,5 +64,5 @@ class Stack:
     #         return None
 
     # def len(self):
-    #     # Returns the number of items in the queue
+    #     # Returns the number of items in the stack
     #     return len(self.storage)
