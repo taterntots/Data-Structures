@@ -10,9 +10,30 @@ class BinarySearchTree:
         self.left = None
         self.right = None
 
+    def __str__(self):
+        return f'Value: {self.value} | Left: {self.left} | Right: {self.right}'
+
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # If the given value is less than the root value
+        if value < self.value:
+            # Check if self.left is a valid node
+            print(f'{value} is less than {self.value}')
+            if self.left:
+                self.left.insert(value)
+            # If the left side is empty
+            else:
+                # Assign the empty node to be our value
+                self.left = BinarySearchTree(value)
+        # Else if the given value is greater than or equal to the root value
+        else: 
+            # Check if self.right is a valid node
+            if self.right:
+                self.right.insert(value)
+            # If the right side is empty
+            else:
+                # Assign the empty node to be our value
+                self.right = BinarySearchTree(value)
 
     # Return True if the tree contains the value
     # False if it does not
@@ -55,3 +76,9 @@ class BinarySearchTree:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+bs = BinarySearchTree(9)
+
+print(bs)
+
+bs.insert(8)
