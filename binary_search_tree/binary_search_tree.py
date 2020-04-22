@@ -18,7 +18,7 @@ class BinarySearchTree:
         # If the given value is less than the root value
         if value < self.value:
             # Check if self.left is a valid node
-            print(f'{value} is less than {self.value}')
+            # print(f'{value} is less than {self.value}')
             if self.left:
                 self.left.insert(value)
             # Else if the left side is empty
@@ -29,40 +29,40 @@ class BinarySearchTree:
        
         else: 
             # Check if self.right is a valid node
-            print(f'{value} is greater than or equal to {self.value}')
+            # print(f'{value} is greater than or equal to {self.value}')
             if self.right:
                 self.right.insert(value)
             # Else if the right side is empty
             else:
                 # Assign the empty node to be our value
                 self.right = BinarySearchTree(value)
-                print(self.right)
+                # print(self.right)
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
         # If the target value is equal to the root value, return true
         if target == self.value:
-            print(f'True: {target} is equal to {self.value}')
+            # print(f'True: {target} is equal to {self.value}')
             return True
 
         # If the target value is less than the root value
         if target < self.value:
             # And if there are no more left branches to go through, return false
             if self.left == None:
-                print(f'False: {target} not found in left half')
+                # print(f'False: {target} not found in left half')
                 return False
             # Otherwise, if a node is found
             else:
                 # Recursively keep going left
-                return self.left.contains(target)
+                self.left.contains(target)
 
         # If the target value is greater than the root value
         else:
             # And if there are no more right branches to go through, return false
-            print(f'{target} is greater than {self.value}')
+            # print(f'{target} is greater than {self.value}')
             if self.right == None:
-                print(f'False: {target} not found in right half')
+                # print(f'False: {target} not found in right half')
                 return False
             # Otherwise, if a node is found
             else:
@@ -71,12 +71,29 @@ class BinarySearchTree:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        # Create a current maximum variable and set it to the root
+        curr_max = self.value
+        # print(f'curr_max = {curr_max}')
+        # If there is a node to the right, set current maximum to that node
+        if self.right:
+            curr_max == self.right
+            return self.right.get_max()
+        # Otherwise, if there are no more nodes to the right, return current maximum
+        else:
+            # print(f'new_curr_max = {curr_max}')
+            return curr_max
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        # Call the function 'cb' on the value of each node
+        cb(self.value)
+        # If a node exists to the right, call cb
+        if self.right:
+            self.right.for_each(cb)
+        # If a node exists to the right, call cb
+        if self.left:
+            self.left.for_each(cb)
 
     # DAY 2 Project -----------------------
 
@@ -108,8 +125,11 @@ class BinarySearchTree:
 
 bs = BinarySearchTree(10)
 
-print(bs)
+# print(bs)
 
+bs.insert(12)
 bs.insert(8)
-bs.insert(3)
-bs.contains(5)
+bs.insert(22)
+bs.contains(10)
+
+bs.get_max()
