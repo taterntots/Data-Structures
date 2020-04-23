@@ -100,17 +100,58 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        # (Base case) If the node provided does not exist, simply stop and return
+        if node == None:
+            return
+        
+        # Recursively run through the left and right, printing values
+        self.in_order_print(node.left) # Recursive left
+        print(node.value) # Must be placed between to get order right!
+        self.in_order_print(node.right) # Recursive right
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        # Make and reference our Queue() class, giving us access to its methods
+        q = Queue()
+        # Add the root to our queue
+        q.enqueue(node)
+
+        # While the queue still has elements
+        while q.len() > 0:
+            # Remove the oldest item in the queue and assign it to current_node
+            current_node = q.dequeue()
+            # Print the value of the current node
+            print(current_node.value)
+
+            # If there's a value left of the current node, add it to the queue
+            if current_node.left:
+                q.enqueue(current_node.left)
+            # If there's a value right of the current node, add it to the queue
+            if current_node.right:
+                q.enqueue(current_node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        # Make and reference our Stack() class, giving us access to its methods
+        stack = Stack()
+        # Add the root of the tree to the stack 
+        stack.push(node)
+
+        # While the stack still has elements
+        while stack.len() > 0:
+            # Remove the newest item in the stack and assign it to current_node
+            current_node = stack.pop()
+            # Print the value of the current node
+            print(current_node.value)
+            # If there's a value left of the current node, add it to the stack
+            if current_node.left:
+                stack.push(current_node.left)
+            # If there's a value right of the current node, add it to the stack
+            if current_node.right:
+                stack.push(current_node.right)
+
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
@@ -130,6 +171,9 @@ bs = BinarySearchTree(10)
 bs.insert(12)
 bs.insert(8)
 bs.insert(22)
+
 bs.contains(10)
 
 bs.get_max()
+
+# bs.in_order_print()
